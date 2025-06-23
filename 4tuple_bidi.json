@@ -1,0 +1,22 @@
+{
+	"features": [
+		"flowStartMilliseconds",
+		"sourceIPAddress",		
+        "destinationIPAddress",
+    	"sourceTransportPort",
+		"destinationTransportPort",
+		"packetTotalCount",
+		"_tcpFlags"
+	],
+	"active_timeout": 1000,
+	"idle_timeout": 1000,
+	"bidirectional": true,
+	"key_features": [
+		"sourceIPAddress",		
+        "destinationIPAddress",
+    	"sourceTransportPort",
+		"destinationTransportPort"
+	]
+}
+
+

@@ -1,0 +1,28 @@
+docker run -it --rm -p 8022:22 -p 8888:8888 -e ROOT_PASSWORD=competition -v "E:\TUWmaster\3. semester\netsec\netsec_competition_SS25:/home/ns/workdir" netsec_ids
+
+ssh ns@localhost -p 8022
+./go-flows run features 4tuple_bidi.json export csv training_flows.csv source libpcap training_clean_mod.pcap
+
+cd workdir
+pip install notebook
+~/.local/bin/jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' #ctrl c za izlazak
+
+mkdir -p ~/submission
+cd /home/ns/workdir
+cp run.sh predict_custom_new.py model_new.joblib 4tuple_bidi.json go-flows ~/submission
+
+cd ~/submission
+chmod +x run.sh
+chmod +x go-flows
+
+### za zip posto ne postoji
+su -
+# enter root password: competition
+
+apt update
+apt install zip -y
+exit 
+
+zip submissionteam30.zip run.sh predict_custom_new.py model_new.joblib 4tuple_bidi.json go-flows
+cp ~/submission/submissionteam30.zip ~/workdir/
+
